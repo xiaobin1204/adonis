@@ -12,6 +12,7 @@
 | http://adonisjs.com/docs/4.0/routing
 |
 */
+const DB = use('Database')
 
 const Route = use('Route')
 
@@ -20,3 +21,6 @@ Route.on('/').render('welcome')
 //  return `hello ~ ${ request.input('name') }`
 //})
 Route.get('/hello', 'HelloController.render')
+Route.get('/posts', async () => {
+  return await DB.table('posts').select('*')
+})
