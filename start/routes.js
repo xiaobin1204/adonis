@@ -17,4 +17,14 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.get('/posts', () => 'List of posts.')
+Route.get('/posts', 'PostController.index')
+Route.post('/posts', () => 'post request.')
+Route.get('/post/:id', ({ params }) => {
+  return `You're watching post ${ params.id }.`
+})
+Route.patch('/post/:id', ({ params }) => {
+  return `Post ${ params.id } has been updated.`
+})
+Route.delete('/post/:id', ({ params }) => {
+  return `Post ${ params.id } has been removed.`
+})
